@@ -19,8 +19,20 @@ bool isPalindrome(int num) {
     return false;
 }
 
+// Exhaustive search of all combinations 
 int main() {
-    int number = 1001;
-    cout << "The number is " << number << ", is it palindromic?" << endl;
-    cout << isPalindrome(1001) << endl;
+    int number = 999;
+    int largestPalindrome = 0;
+    int mult = 0;
+
+    for (int i = number; i > 0; i--) {
+        for (int j = i; j > 0; j--) {
+            mult = i * j;
+            if ( isPalindrome(mult) ) {
+                if (largestPalindrome < mult) largestPalindrome = mult; 
+            }
+        }
+    }
+
+    cout << largestPalindrome << endl;
 }
