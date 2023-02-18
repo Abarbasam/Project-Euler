@@ -15,7 +15,7 @@
 
 using namespace std;
 
-long gcd(long a, long b) {
+long gcd(long a, int b) {
     int r = 0;
     while (b != 0) {
         r = a % b;
@@ -28,11 +28,28 @@ long gcd(long a, long b) {
 int main() {
     long LCM = 20;
     
-    for (long i = LCM - 1; i > 1; i--) {
+    // Find compounding least common multiple from 20 to 2. 
+    for (int i = LCM - 1; i > 1; i--) {
         LCM = (LCM * i) / gcd(LCM, i); 
     }
-
+    
     cout << LCM << endl;
+
+    /* INFERIOR METHOD
+    long LCM = 0;
+    int increment = 20;
+    bool LCM_found = false;
+
+    while ( !LCM_found ) {
+        LCM += increment;
+
+        for (int i = increment - 1; i > 1; i--) {
+            if ( LCM % i != 0 ) break;
+            if ( i == 2 ) LCM_found = true; 
+        }
+    }
+    */
+
     return(0);
 }
 
